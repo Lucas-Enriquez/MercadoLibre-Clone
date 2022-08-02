@@ -17,7 +17,6 @@ export const Search = () => {
 	const { isLoading, data } = useObtainSearchedProductsQuery(title)
 
 	const state = useAppSelector(state => state.searchProducts.productList)
-	console.log({ isLoading, state })
 
 	const [getSelectedProduct, result] = useGetSelectedProductMutation()
 

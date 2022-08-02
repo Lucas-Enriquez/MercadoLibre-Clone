@@ -26,9 +26,7 @@ export const ProductDetails = () => {
 
 	useEffect(() => {
 		setSelectedImageSize(selectedImage.size.split('x'))
-		console.log(selectedImage)
 		setSelectedImageFull(selectedImage.url.replace(regex, '-F'))
-		console.log(selectedImageFull)
 	}, [selectedImage])
 
 	const imageProps = {

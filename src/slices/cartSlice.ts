@@ -33,7 +33,6 @@ export const cartSlice = createSlice({
 		},
 		decreaseQuantity: (state, { payload }: PayloadAction<any>) => {
 			const selectedProduct = state.products.find(product => product.id === payload)
-			console.log(selectedProduct)
 
 			if (selectedProduct !== undefined) {
 				selectedProduct.quantity > 1 &&
