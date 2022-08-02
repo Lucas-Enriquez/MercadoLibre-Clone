@@ -13,7 +13,9 @@ import { setSelectedProducts } from '../slices/searchSlice'
 export const Product = () => {
 	const { selectedProduct } = useAppSelector<any>(state => state.searchProducts)
 	const dispatch = useAppDispatch()
+
 	const { product } = useParams()
+
 	const { isSuccess, data } = useObtainSelectedProductsQuery(product)
 
 	useEffect(() => {

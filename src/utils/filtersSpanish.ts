@@ -1,4 +1,8 @@
-export const filtersSpanish = {
+interface Filtros {
+	[index: string]: string,
+}
+
+export const filtersSpanish: Filtros = {
 	category: 'Categorías',
 	official_store: 'Tiendas Oficiales',
 	discount: 'Descuentos',

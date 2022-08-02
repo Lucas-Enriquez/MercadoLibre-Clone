@@ -10,17 +10,16 @@ export const meliApi = createApi({
 		getCategories: builder.query<[], void>({
 			query: () => '/categories'
 		}),
-		//! TODO: Fijarse si es óptimo declararlo como "any"
 		searchProducts: builder.mutation<any, string>({
 			query: (term) => `/search?q=${term}`
 		}),
 		obtainSearchedProducts: builder.query<[], any>({
 			query: (term) => `/search?q=${term}`
 		}),
-		getSelectedProduct: builder.mutation<[], any>({
+		getSelectedProduct: builder.mutation<{body: {id: string}}[], any>({
 			query: (id) => `https://api.mercadolibre.com/items?ids=${id}`
 		}),
-		obtainSelectedProducts: builder.query<[], any>({
+		obtainSelectedProducts: builder.query<{body: {}}[], any>({
 			query: (id) => `https://api.mercadolibre.com/items?ids=${id}`
 		})
 	})
