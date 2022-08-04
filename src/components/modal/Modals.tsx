@@ -1,13 +1,14 @@
 import { useUi } from '../../hooks/useUi'
 import Modal from 'react-modal'
 import { useAppSelector } from '../../hooks/reduxHooks'
-import { customStyles } from '../../utils/modalStyles'
+import { checkoutModalStyles, customStyles } from '../../utils/modalStyles'
 import { PaymentMethods } from './PaymentMethods'
 import { Refund } from './Refund'
 import { Warranty } from './Warranty'
 import { WithoutCard } from './WithoutCard'
+import { SuccessfulPurchase } from './SuccessfulPurchase'
 
-export const QuestionsModal = () => {
+export const Modals = () => {
 	const { isQuestionModalOpen, closeQuestionModal } = useUi()
 	const { content } = useAppSelector(state => state.ui)
 
@@ -15,6 +16,14 @@ export const QuestionsModal = () => {
 		isOpen: isQuestionModalOpen,
 		onRequestClose: closeQuestionModal,
 		style: customStyles,
+		closeTimeoutMS: 200,
+		className: 'modal',
+		overlayClassName: 'modal-fondo'
+	}
+
+	const PurchaseModalProps = {
+		isOpen: isQuestionModalOpen,
+		style: checkoutModalStyles,
 		closeTimeoutMS: 200,
 		className: 'modal',
 		overlayClassName: 'modal-fondo'
@@ -55,6 +64,15 @@ export const QuestionsModal = () => {
 				{content === 'without-card' && (
 					<div className='container-modal'>
 						<WithoutCard />
+					</div>
+				)}
+			</Modal>)
+	} else if (content === 'successful-purchase') {
+		return (
+			<Modal {...PurchaseModalProps} >
+				{content === 'successful-purchase' && (
+					<div className='container-modal'>
+						<SuccessfulPurchase />
 					</div>
 				)}
 			</Modal>)

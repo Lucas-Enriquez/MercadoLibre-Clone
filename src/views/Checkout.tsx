@@ -1,42 +1,56 @@
+import { useState } from 'react'
 import { AiOutlineTrophy } from 'react-icons/ai'
 import { IoLocationOutline } from 'react-icons/io5'
-import { useNavigate } from 'react-router-dom'
-import Swal from 'sweetalert2'
+// import { useNavigate } from 'react-router-dom'
+// import Swal from 'sweetalert2'
 import { useAppSelector } from '../hooks/reduxHooks'
+import { useUi } from '../hooks/useUi'
 
 export const Checkout = () => {
 	const { products: cartProducts } = useAppSelector(state => state.cart)
 
-	const navigate = useNavigate()
+	const { openQuestionModal } = useUi()
+	// const navigate = useNavigate()
 
 	const total = cartProducts.map((product: {updatedPrice: number}) => product.updatedPrice).reduce((price: number, acc: any) => price + acc, 0)
 
-	const animateBuy = () => {
-		let timerInterval: number
-		Swal.fire({
-			title: 'Procesando compra...',
-			html: 'Por favor aguarde unos segundos...',
-			timer: 3000,
-			timerProgressBar: true,
-			didOpen: () => {
-				Swal.showLoading()
-			},
-			willClose: () => {
-				clearInterval(timerInterval)
-			}
-		})
+	// const animateBuy = () => {
+	// 	let timerInterval: number
+	// 	Swal.fire({
+	// 		title: 'Procesando compra...',
+	// 		html: 'Por favor aguarde unos segundos...',
+	// 		timer: 3000,
+	// 		timerProgressBar: true,
+	// 		didOpen: () => {
+	// 			Swal.showLoading()
+	// 		},
+	// 		willClose: () => {
+	// 			clearInterval(timerInterval)
+	// 		}
+	// 	})
 
-		setTimeout(() => {
-			Swal.fire({
-				icon: 'success',
-				title: 'Gracias por su compra!',
-				confirmButtonText: 'Siguiente'
-			}).then((result) => {
-				if (result.isConfirmed) {
-					navigate('/')
-				}
-			})
-		}, 3000)
+	// 	setTimeout(() => {
+	// 		Swal.fire({
+	// 			icon: 'success',
+	// 			title: 'Gracias por su compra!',
+	// 			confirmButtonText: 'Siguiente'
+	// 		}).then((result) => {
+	// 			if (result.isConfirmed) {
+	// 				navigate('/')
+	// 			}
+	// 		})
+	// 	}, 3000)
+	// }
+
+	const [animation, setAnimation] = useState(false)
+
+	const btnAnimation = () => {
+		setAnimation(!animation)
+		if (!animation) {
+			setTimeout(() => {
+				openQuestionModal('successful-purchase')
+			}, 3000)
+		}
 	}
 
 	return (
@@ -103,13 +117,12 @@ export const Checkout = () => {
 								<span>Beneficio Mercado Puntos</span>
 							</div>
 							<div className='btn-container text-right'>
-								<button onClick={() => animateBuy()} className='py-3 px-5 text-white font-medium bg-blue-500  rounded-md self-end hover:bg-blue-400 transition-colors ease-in-out'>Comprar</button>
 							</div>
 						</div>
 					</div>
 
 				</div>
-				<div className='h-screen bg-zinc-100 w-3/6 pt-11 px-6'>
+				<div className='h-screen bg-zinc-100 w-3/6 pt-11 px-6 flex flex-col gap-2'>
 					<h3 className='font-bold text-sm'>Resumen de compra</h3>
 					<hr className='my-3'/>
 					<div className='flex flex-col'>
@@ -127,6 +140,8 @@ export const Checkout = () => {
 						<span className='font-light text-sm'>Total</span>
 						<span className='font-light text-lg'>$ {total.toLocaleString('es-AR')}</span>
 					</div>
+					<button onClick={() => btnAnimation()} className={`purchase-btn transition-colors ease-in-out ${animation ? 'animating' : ''}`}><p>{!animation ? 'Confirmar Compra' : 'Procesando compra'}</p></button>
+					{/* <button onClick={() => openQuestionModal('successful-purchase')} className='purchase-btn transition-colors ease-in-out'>Confirmar Compra</button> */}
 				</div>
 			</section>
 		</main>

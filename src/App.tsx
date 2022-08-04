@@ -10,6 +10,7 @@ import { Cart } from './views/Cart'
 import { useEffect } from 'react'
 import { useAppSelector } from './hooks/reduxHooks'
 import { Checkout } from './views/Checkout'
+import { Modals } from './components/modal/Modals'
 
 Modal.setAppElement('#root')
 
@@ -32,6 +33,7 @@ function App () {
 				<Route path='/cart' element={<Cart/>}/>
 				<Route path='/checkout/cart' element={<Checkout />}/>
 			</Routes>
+			<Modals />
 		</BrowserRouter>
 	)
 }

@@ -14,7 +14,7 @@ module.exports = {
 	},
 	plugins: ['react', '@typescript-eslint'],
 	rules: {
-		indent: [2, 'space'],
+		indent: [2, 'tab'],
 		'no-tabs': 0,
 		'react/react-in-jsx-scope': 'off',
 		'dot-notation': 0,

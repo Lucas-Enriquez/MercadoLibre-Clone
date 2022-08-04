@@ -138,3 +138,88 @@ th {
 .ReactModal__Overlay--before-close{
   opacity: 0;
 }
+
+.purchase-btn {
+  width: 1000px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  margin-top: 20px;
+  padding: 16px 20px;
+  color: white;
+  width: 100%;
+  background-color: rgb(59, 130, 246, 1);
+  position: relative;
+  /* mt-5 py-4 px-5 w-full text-white font-medium bg-blue-500 rounded-md self-end hover:bg-blue-400 text-sm transition-colors ease-in-out */
+}
+
+.purchase-btn:hover {
+  background-color: rgb(96, 165, 250, 1);
+}
+
+:root {
+  --delay-animation-time: 1000ms;
+  --progress-animation-time: 2000ms;
+  --circle-animation-time: 300ms;
+  --checkmark-animation-time: 300ms;
+  --btn-width: 125px;
+  --btn-height: 40px;
+}
+
+.purchase-btn.animating {
+  background-color: transparent;
+  color: white;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.purchase-btn p {
+  z-index: 10;
+  position: sticky;
+}
+
+.purchase-btn::before {
+  content: "";
+  display: none;
+  /* opacity: .5; */
+  position: absolute;
+  background-color: rgb(59, 130, 246, 1);
+  border-radius: 6px;
+  inset: 0;
+}
+
+.purchase-btn::after {
+  content: "";
+  display: none;
+  position: absolute;
+  background-color: rgb(96, 165, 250, 1);
+  height: 100%;
+  left: 0%;
+  right: 0%;
+  top: 0%;
+  bottom: 45%;
+  border-radius: .25em;
+  opacity: 1;
+  width: 0%;
+  animation: progress var(--progress-animation-time) var(--delay-animation-time);
+  animation-fill-mode: forwards;
+}
+
+.purchase-btn.animating::before,
+.purchase-btn.animating::after {
+  display: block;
+}
+
+@keyframes delay {
+  100% {
+    left: -25%;
+    right: -25%;
+    border-radius: .25em;
+  }
+}
+
+@keyframes progress {
+  100% {
+    width: 100%;
+  }
+}

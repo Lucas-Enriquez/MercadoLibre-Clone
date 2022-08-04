@@ -2,7 +2,7 @@ import { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { useObtainSelectedProductsQuery } from '../api/meliApi'
 import { AddedToCartMessage } from '../components/cart/AddedToCartMessage'
-import { QuestionsModal } from '../components/modal/QuestionsModal'
+import { Modals } from '../components/modal/Modals'
 import { PaymentMethods } from '../components/product-details/PaymentMethods'
 import { ProductBuyBox } from '../components/product-details/ProductBuyBox'
 import { ProductDetails } from '../components/product-details/ProductDetails'
@@ -43,7 +43,6 @@ export const Product = () => {
 								<ProductBuyBox />
 								<SellerDetails />
 								<PaymentMethods />
-								<QuestionsModal />
 							</div>
 						</section>
 				}

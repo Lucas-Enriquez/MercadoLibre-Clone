@@ -17,8 +17,8 @@ export const Cart = () => {
 					{cartProducts.length === 0 &&
 			<div className='w-full h-full bg-white p-16 flex justify-center items-center flex-col gap-2'>
 				<div className='text-center'>
-					<h3 className='text-4xl text-gray-400 font-light mb-2'>Your cart is empty</h3>
-					<small className='text-lg text-gray-400 font-light'>Thousands of products are waiting for you!</small>
+					<h3 className='text-4xl text-gray-400 font-light mb-2'>Tu carrito está vacío</h3>
+					<small className='text-lg text-gray-400 font-light'>¿No sabés qué comprar? ¡Miles de productos te esperan!</small>
 				</div>
 			</div>}
 

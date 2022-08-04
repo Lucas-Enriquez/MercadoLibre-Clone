@@ -1,4 +1,4 @@
-import { addProductToCart, clearMessage, decreaseQuantity, deleteItem, getPrices, increaseQuantity, Product } from '../slices/cartSlice'
+import { addProductToCart, clearAllCart, clearMessage, decreaseQuantity, deleteItem, getPrices, increaseQuantity, Product } from '../slices/cartSlice'
 import { useAppDispatch } from './reduxHooks'
 
 export const useCart = () => {
@@ -23,6 +23,10 @@ export const useCart = () => {
 	const clearAddedMessage = () => {
 		dispatch(clearMessage())
 	}
+
+	const clearCart = () => {
+		dispatch(clearAllCart())
+	}
 	return {
 		//* Props
 		//* Metodos
@@ -30,6 +34,7 @@ export const useCart = () => {
 		clearAddedMessage,
 		addQuantity,
 		decrementQuantity,
-		deleteProduct
+		deleteProduct,
+		clearCart
 	}
 }
