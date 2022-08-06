@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useAppSelector } from '../hooks/reduxHooks'
 import { useCart } from '../hooks/useCart'
@@ -7,6 +8,10 @@ export const Cart = () => {
 	const { addQuantity, decrementQuantity, deleteProduct } = useCart()
 	const { products: cartProducts } = useAppSelector<any>(state => state.cart)
 	const navigate = useNavigate()
+
+	useEffect(() => {
+		document.title = 'Carrito de compras'
+	}, [])
 
 	const total = cartProducts.map((product: {updatedPrice: number}) => product.updatedPrice).reduce((price: number, acc: any) => price + acc, 0)
 

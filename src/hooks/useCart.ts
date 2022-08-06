@@ -28,7 +28,6 @@ export const useCart = () => {
 		dispatch(clearAllCart())
 	}
 	return {
-		//* Props
 		//* Metodos
 		addToCart,
 		clearAddedMessage,

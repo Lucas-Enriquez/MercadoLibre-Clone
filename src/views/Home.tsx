@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import { Category } from '../components/carousels/Category'
 import { HeaderCarousel } from '../components/carousels/HeaderCarousel'
 import { Discovery } from '../components/discovery/Discovery'
@@ -9,6 +10,10 @@ import { PromoDisney } from '../components/promo/PromoDisney'
 import { Stores } from '../components/stores/Stores'
 
 export const Home = () => {
+	useEffect(() => {
+		document.title = 'Mercado Libre Clone'
+	}, [])
+
 	return (
 		<div className="App items-center h-full pb-20 overflow-x-hidden bg-background-meli">
 			<HeaderCarousel />

@@ -1,7 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 interface SearchProducts {
-	//! TODO: Fijarse si es óptimo declararlo como "any"
   productList: any
   selectedProduct: null
 }

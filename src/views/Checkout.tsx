@@ -1,8 +1,6 @@
 import { useState } from 'react'
 import { AiOutlineTrophy } from 'react-icons/ai'
 import { IoLocationOutline } from 'react-icons/io5'
-// import { useNavigate } from 'react-router-dom'
-// import Swal from 'sweetalert2'
 import { useAppSelector } from '../hooks/reduxHooks'
 import { useUi } from '../hooks/useUi'
 
@@ -10,37 +8,8 @@ export const Checkout = () => {
 	const { products: cartProducts } = useAppSelector(state => state.cart)
 
 	const { openQuestionModal } = useUi()
-	// const navigate = useNavigate()
 
 	const total = cartProducts.map((product: {updatedPrice: number}) => product.updatedPrice).reduce((price: number, acc: any) => price + acc, 0)
-
-	// const animateBuy = () => {
-	// 	let timerInterval: number
-	// 	Swal.fire({
-	// 		title: 'Procesando compra...',
-	// 		html: 'Por favor aguarde unos segundos...',
-	// 		timer: 3000,
-	// 		timerProgressBar: true,
-	// 		didOpen: () => {
-	// 			Swal.showLoading()
-	// 		},
-	// 		willClose: () => {
-	// 			clearInterval(timerInterval)
-	// 		}
-	// 	})
-
-	// 	setTimeout(() => {
-	// 		Swal.fire({
-	// 			icon: 'success',
-	// 			title: 'Gracias por su compra!',
-	// 			confirmButtonText: 'Siguiente'
-	// 		}).then((result) => {
-	// 			if (result.isConfirmed) {
-	// 				navigate('/')
-	// 			}
-	// 		})
-	// 	}, 3000)
-	// }
 
 	const [animation, setAnimation] = useState(false)
 
@@ -141,7 +110,6 @@ export const Checkout = () => {
 						<span className='font-light text-lg'>$ {total.toLocaleString('es-AR')}</span>
 					</div>
 					<button onClick={() => btnAnimation()} className={`purchase-btn transition-colors ease-in-out ${animation ? 'animating' : ''}`}><p>{!animation ? 'Confirmar Compra' : 'Procesando compra'}</p></button>
-					{/* <button onClick={() => openQuestionModal('successful-purchase')} className='purchase-btn transition-colors ease-in-out'>Confirmar Compra</button> */}
 				</div>
 			</section>
 		</main>
