@@ -13,7 +13,7 @@ export const meliApi = createApi({
 		searchProducts: builder.mutation<any, string>({
 			query: (term) => `/search?q=${term}`
 		}),
-		obtainSearchedProducts: builder.query<[], string>({
+		obtainSearchedProducts: builder.query<[], any>({
 			query: (term) => `/search?q=${term}`
 		}),
 		getSelectedProduct: builder.mutation<{body: {id: string}}[], any>({
